@@ -31,3 +31,5 @@ cd sweb<br>
 
 停止任务<br>
 ./sweb.sh stop<br>
+
+默认端口80 需要其他端口页面修改后重启
