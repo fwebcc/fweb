@@ -27,5 +27,7 @@ apt-get clean<br>
 git clone https://github.com/fwebcc/sweb.git<br>
 chmod -R 777 ./sweb<br>
 cd sweb<br>
-./sweb.sh<br>
+./sweb.sh start<br>
 
+停止任务<br>
+./sweb.sh stop<br>
