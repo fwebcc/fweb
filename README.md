@@ -4,6 +4,7 @@ DEBIAN9 WEB UI 操作页面
 直接克隆到home目录给与权限 ./sweb.sh 运行即可
 
 git clone https://github.com/fwebcc/sweb.git
+chmod -R 777 ./sweb
 cd sweb
 ./sweb.sh
 
