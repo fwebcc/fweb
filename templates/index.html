@@ -1,0 +1,135 @@
+<!--SOMEWOOD.CN 2018-2-24 EMAIL:1228822@QQ.COM SWEB9.0-->
+<!DOCTYPE html>
+  <html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SWEB</title>
+      <meta name="keywords" content="SWEB OS">
+      <link rel="shortcut icon" href="../static/img/sys/favicon.ico"/>
+      <link rel="stylesheet" href="../static/css/bootstrap.css">
+      <link rel="stylesheet" href="../static/css/sweb.css"> 
+      <link rel="stylesheet" href="../static/css/dataTables.css">
+      <link rel="stylesheet" href="../static/css/loading.css"  />
+      <link rel="stylesheet" href="../static/css/bootstrapSwitch.css" />
+      <link rel="stylesheet" href="../static/css/font-awesome.min.css"/> 
+
+      <script src="../static/js/jquery-2.1.1.min.js"></script>     
+      <script src="../static/js/md5.js"></script>
+      <script src="../static/js/popper.min.js"></script>
+      <script src="../static/js/jquery.cookies.2.2.0.js"></script> 
+      <script src="../static/js/bootstrap.min.js"></script>     
+      <script src="../static/js/sweb.js"></script> 
+  </head> 
+<body> 
+<div class="bg" id="bg"></div>
+<div id="swebload"></div>
+<div id="sweb" style="display:none">
+
+<div id="seepd"></div>
+<div class="container-fluid" style="max-width:1024px;">
+   <div class="row">
+     <div class="col-sm-6">
+         
+  <div style="color:#FFF;text-shadow:black 1px 1px 1px; margin-top:10px">   
+           <a href="http://fweb.cc" target="target" ><h2>FWEB.CC</h2></a>         
+         </div>
+         <div id='pageleft' style="color:#FFF;text-shadow:black 1px 1px 1px;">
+         </div>
+     </div>  
+     <div class="col-sm-6 indextopright" style="padding:0px" >
+         <div class="i_il">                  
+          <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" onclick = page("lsfile")><i class="fa fa-laptop"></i></button> 
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" onclick = page("config")><i class="fa fa-gear"></i></button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" onclick = page("pw")><i class="fa fa-power-off"></i></button>
+          &nbsp;&nbsp;
+          <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" onclick = exit()><i class="fa fa-sign-out"></i></button>               
+         </div>          
+         <div id='pageright' class="i_y" ></div>
+     </div>
+    </div>
+</div>
+</div>
+<div  id="loading" style="display:none;z-index:999999;padding-top:42px" class="loading cssshadow">
+    <svg viewBox="0 0 120 120" style="height:120px;width:120px;">
+      <g id="circle" class="g-circles g-circles--v1">
+          <circle id="12" transform="translate(35, 16.698730) rotate(-30) translate(-35, -16.698730) " cx="35" cy="16.6987298" r="10"></circle>
+          <circle id="11" transform="translate(16.698730, 35) rotate(-60) translate(-16.698730, -35) " cx="16.6987298" cy="35" r="10"></circle>
+          <circle id="10" transform="translate(10, 60) rotate(-90) translate(-10, -60) " cx="10" cy="60" r="10"></circle>
+          <circle id="9" transform="translate(16.698730, 85) rotate(-120) translate(-16.698730, -85) " cx="16.6987298" cy="85" r="10"></circle>
+          <circle id="8" transform="translate(35, 103.301270) rotate(-150) translate(-35, -103.301270) " cx="35" cy="103.30127" r="10"></circle>
+          <circle id="7" cx="60" cy="110" r="10"></circle>
+          <circle id="6" transform="translate(85, 103.301270) rotate(-30) translate(-85, -103.301270) " cx="85" cy="103.30127" r="10"></circle>
+          <circle id="5" transform="translate(103.301270, 85) rotate(-60) translate(-103.301270, -85) " cx="103.30127" cy="85" r="10"></circle>
+          <circle id="4" transform="translate(110, 60) rotate(-90) translate(-110, -60) " cx="110" cy="60" r="10"></circle>
+          <circle id="3" transform="translate(103.301270, 35) rotate(-120) translate(-103.301270, -35) " cx="103.30127" cy="35" r="10"></circle>
+          <circle id="2" transform="translate(85, 16.698730) rotate(-150) translate(-85, -16.698730) " cx="85" cy="16.6987298" r="10"></circle>
+          <circle id="1" cx="60" cy="10" r="10"></circle>
+      </g>  
+  </svg><div id="loading_info"></div>
+ </div>
+<div class="container-fluid mx-auto" style="max-width:800px;margin:100px auto auto auto;text-shadow:black 1px 1px 1px;">
+   <div class="row" id="app_list"></div>
+</div>
+<br><br>
+<div class="container-fluid text-center" style="max-width:800px;"> 
+<nav role='navigation'><div id='paging_page'></div></nav>
+</div> 
+
+</div>
+<div style="z-index:99999">
+<!-- 弹出-->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+    <div class="text-right" style="z-index:9999;pointer-events:auto;position:absolute;width:10%;right:0px;padding-right:5px;"><button type="button" class="close" data-dismiss="modal" id="close_page">&times;</button></div>
+         <div id="page" class="modal-contentui modal-content"></div>        
+     </div>
+  </div>
+ <!-- 弹出-->
+  <div class="modal fade" id="app">
+    <div class="modal-dialog">
+        <div class="text-right" style="z-index:9999;pointer-events:auto;position:absolute;width:10%;right:0px;padding-right:5px;"><button type="button" class="close" data-dismiss="modal" id="close_app">&times;</button></div>
+         <div id="app_page" class="modal-contentui modal-content"></div>         
+     </div>
+  </div>   
+  <!-- 弹出-->
+  <div class="modal fade" id="dir_modal">
+    <div class="modal-dialog">
+         <div class="text-right" style="z-index:9999;pointer-events:auto;position:absolute;width:10%;right:0px;padding-right:5px;"><button type="button" class="close" data-dismiss="modal" id="close_dir">&times;</button></div>
+         <div id="dir_list" class="modal-contentui modal-content"></div>               
+     </div>
+  </div>
+</div>
+<!--  Defining Angle Gradient Colors  -->
+<svg width="0" height="0">
+<defs>
+<lineargradient id="cl1" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
+    <stop stop-color="#618099"></stop>
+    <stop offset="100%" stop-color="#8e6677"></stop>
+</lineargradient>
+<lineargradient id="cl2" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+    <stop stop-color="#8e6677"></stop>
+    <stop offset="100%" stop-color="#9b5e67"></stop>
+</lineargradient>
+<lineargradient id="cl3" gradientUnits="objectBoundingBox" x1="1" y1="0" x2="0" y2="1">
+    <stop stop-color="#9b5e67"></stop>
+    <stop offset="100%" stop-color="#9c787a"></stop>
+</lineargradient>
+<lineargradient id="cl4" gradientUnits="objectBoundingBox" x1="1" y1="1" x2="0" y2="0">
+    <stop stop-color="#9c787a"></stop>
+    <stop offset="100%" stop-color="#817a94"></stop>
+</lineargradient>
+<lineargradient id="cl5" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="0" y2="0">
+    <stop stop-color="#817a94"></stop>
+    <stop offset="100%" stop-color="#498a98"></stop>
+</lineargradient>
+<lineargradient id="cl6" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="0">
+    <stop stop-color="#498a98"></stop>
+    <stop offset="100%" stop-color="#618099"></stop>
+</lineargradient>
+</defs>
+</svg>
+ <a href="" id="alink" target="target" style="visibility: hidden;"><span id="spanlink">somewood.cn</span></a>
+</body>
+</html>
